@@ -18,7 +18,7 @@ ADD requirements.txt requirements.txt
 # Editing sources and update apt.
 RUN echo "deb http://archive.ubuntu.com/ubuntu trusty main universe multiverse restricted" > /etc/apt/sources.list && \
     echo "deb http://archive.ubuntu.com/ubuntu trusty-security main universe multiverse restricted" >> /etc/apt/sources.list && \
-    apt-get update && apt-get install -y --force-yes \
+    apt-get update && DEBIAN_FRONTEND=noninteractive apt-get install -y --force-yes \
     build-essential \
     python-setuptools \
     python-dev \
