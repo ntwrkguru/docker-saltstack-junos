@@ -29,7 +29,7 @@ RUN echo "deb http://archive.ubuntu.com/ubuntu trusty main universe multiverse r
     git \
     git-core \
 \
-&& easy_install pip \
+&& wget https://bootstrap.pypa.io/get-pip.py -O - | python \
 && pip install requirements.txt
 
 ### Packages for 64bit systems
