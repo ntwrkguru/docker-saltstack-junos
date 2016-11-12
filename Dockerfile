@@ -22,6 +22,7 @@ RUN echo "deb http://archive.ubuntu.com/ubuntu trusty main universe multiverse r
     libxml2-dev \
     libxslt-dev \
     libssl-dev \
+    libffi6=3.1~rc1+r3.0.13-12 \
     libffi-dev \
     python-lxml \
     wget \
