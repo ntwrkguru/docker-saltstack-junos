@@ -13,7 +13,9 @@ from ubuntu:14.04
 MAINTAINER Iddo Cohen <icohen@juniper.net>
 
 # Editing sources and update apt.
-RUN apt-get update && apt-get install -y \
+RUN echo "deb http://archive.ubuntu.com/ubuntu trusty main universe multiverse restricted" > /etc/apt/sources.list && \
+    echo "deb http://archive.ubuntu.com/ubuntu trusty-security main universe multiverse restricted" >> /etc/apt/sources.list && \
+    apt-get update && apt-get install -y \
     build-essential \
     python-setuptools \
     python-dev \
@@ -22,12 +24,12 @@ RUN apt-get update && apt-get install -y \
     libssl-dev \
     libffi-dev \
     python-lxml \
+    wget \
     git \
     git-core \
 \
 && easy_install pip \
-&& pip install --upgrade ndg-httpsclient #Resolves insecurity warnings in pip
-&& pip install junos-eznc jxmlease pyparsing twisted
+&& pip install requirements.txt
 
 ### Packages for 64bit systems
 # For 64bit systems one gets "usr/bin/ld: cannot find -lz" at PyEZ installation, solution install lib32z1-dev and zlib1g-dev
@@ -35,15 +37,10 @@ RUN apt-get update && apt-get install -y \
 RUN if [ "$(uname -m)" = "x86_64" ]; then apt-get install -y lib32z1-dev zlib1g-dev; fi
 
 ### Retrieving bootstrap.sh form SaltStack
-###
 # Installation manager for SaltStack.
-###
-RUN curl -o /root/install_salt.sh http://bootstrap.saltstack.org
-
-### Installing SaltStack (carbon release).
 # Carbon release to avoid grains/facts bugs with __proxy__.
 #-M Install master, -d ignore install check, -X do not start the deamons and -P allows pip installation of some packages.
-RUN sh /root/install_salt.sh -d -M -X -P git carbon
+RUN wget http://bootstrap.saltstack.org | bash -s -- -d -M -X -P git carbon
 
 ### Creating directories for SaltStack
 RUN mkdir -p /srv/salt /srv/pillar
