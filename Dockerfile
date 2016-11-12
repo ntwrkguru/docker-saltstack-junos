@@ -9,8 +9,11 @@
 # 
 # *******************>
 
-from ubuntu:14.04
+FROM ubuntu:14.04
+
 MAINTAINER Iddo Cohen <icohen@juniper.net>
+
+ADD requirements.txt requirements.txt
 
 # Editing sources and update apt.
 RUN echo "deb http://archive.ubuntu.com/ubuntu trusty main universe multiverse restricted" > /etc/apt/sources.list && \
