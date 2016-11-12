@@ -1,4 +1,4 @@
-urllib3[secure]
+ndg-httpsclient
 junos-eznc
 jxmlease
 pyparsing
