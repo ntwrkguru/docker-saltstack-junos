@@ -15,7 +15,7 @@ MAINTAINER Iddo Cohen <icohen@juniper.net>
 # Editing sources and update apt.
 RUN echo "deb http://archive.ubuntu.com/ubuntu trusty main universe multiverse restricted" > /etc/apt/sources.list && \
     echo "deb http://archive.ubuntu.com/ubuntu trusty-security main universe multiverse restricted" >> /etc/apt/sources.list && \
-    apt-get update && apt-get install -y --force=yes \
+    apt-get update && apt-get install -y --force-yes \
     build-essential \
     python-setuptools \
     python-dev \
