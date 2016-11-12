@@ -44,7 +44,7 @@ RUN if [ "$(uname -m)" = "x86_64" ]; then apt-get install -y lib32z1-dev zlib1g-
 # Installation manager for SaltStack.
 # Carbon release to avoid grains/facts bugs with __proxy__.
 #-M Install master, -d ignore install check, -X do not start the deamons and -P allows pip installation of some packages.
-RUN wget http://bootstrap.saltstack.org | bash -s -- -d -M -X -P git carbon
+RUN wget https://raw.githubusercontent.com/saltstack/salt-bootstrap/stable/bootstrap-salt.sh | bash -s -- -d -M -X -P git carbon
 
 ### Creating directories for SaltStack
 RUN mkdir -p /srv/salt /srv/pillar
