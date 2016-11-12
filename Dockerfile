@@ -33,7 +33,7 @@ RUN echo "deb http://archive.ubuntu.com/ubuntu trusty main universe multiverse r
     git-core \
 \
 && wget https://bootstrap.pypa.io/get-pip.py -O - | python \
-&& pip install requirements.txt
+&& pip install -r requirements.txt
 
 ### Packages for 64bit systems
 # For 64bit systems one gets "usr/bin/ld: cannot find -lz" at PyEZ installation, solution install lib32z1-dev and zlib1g-dev
