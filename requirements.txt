@@ -1,4 +1,4 @@
-ndg-httpsclient
+pyopenssl
 junos-eznc
 jxmlease
 pyparsing
