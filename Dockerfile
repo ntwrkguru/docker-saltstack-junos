@@ -38,7 +38,7 @@ RUN echo "deb http://archive.ubuntu.com/ubuntu trusty main universe multiverse r
 ### Packages for 64bit systems
 # For 64bit systems one gets "usr/bin/ld: cannot find -lz" at PyEZ installation, solution install lib32z1-dev and zlib1g-dev
 # Note: Because sh -c is executed via Docker, it is not == but =
-RUN if [ "$(uname -m)" = "x86_64" ]; then apt-get install -y lib32z1-dev zlib1g-dev; fi
+RUN if [ "$(uname -m)" = "x86_64" ]; then DEBIAN_FRONTEND=noninteractive apt-get install -y lib32z1-dev zlib1g-dev; fi
 
 ### Retrieving bootstrap.sh form SaltStack
 # Installation manager for SaltStack.
