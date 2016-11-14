@@ -28,11 +28,11 @@ RUN echo "deb http://archive.ubuntu.com/ubuntu trusty main universe multiverse r
     libffi6=3.1~rc1+r3.0.13-12 \
     libffi-dev \
     python-lxml \
-    wget \
+    curl \
     git \
     git-core \
 \
-&& wget https://bootstrap.pypa.io/get-pip.py -O - | python \
+&& curl https://bootstrap.pypa.io/get-pip.py - | python \
 && pip install -r requirements.txt
 
 ### Packages for 64bit systems
@@ -44,7 +44,7 @@ RUN if [ "$(uname -m)" = "x86_64" ]; then apt-get install -y lib32z1-dev zlib1g-
 # Installation manager for SaltStack.
 # Carbon release to avoid grains/facts bugs with __proxy__.
 #-M Install master, -d ignore install check, -X do not start the deamons and -P allows pip installation of some packages.
-RUN wget https://raw.githubusercontent.com/saltstack/salt-bootstrap/stable/bootstrap-salt.sh | bash -s -- -d -M -X -P git carbon
+RUN curl https://raw.githubusercontent.com/saltstack/salt-bootstrap/stable/bootstrap-salt.sh | bash -s -- -d -M -X -P git carbon
 
 ### Creating directories for SaltStack
 RUN mkdir -p /srv/salt /srv/pillar
