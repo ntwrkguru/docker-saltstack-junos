@@ -44,7 +44,7 @@ RUN if [ "$(uname -m)" = "x86_64" ]; then DEBIAN_FRONTEND=noninteractive apt-get
 # Installation manager for SaltStack.
 # Carbon release to avoid grains/facts bugs with __proxy__.
 #-M Install master, -d ignore install check, -X do not start the deamons and -P allows pip installation of some packages.
-RUN curl https://raw.githubusercontent.com/saltstack/salt-bootstrap/stable/bootstrap-salt.sh | bash -s -- -d -M -X -P git c99e39e
+RUN curl https://raw.githubusercontent.com/saltstack/salt-bootstrap/stable/bootstrap-salt.sh | bash -s -- -d -M -X -P git v2016.11.0rc2
 
 ### Creating directories for SaltStack
 RUN mkdir -p /srv/salt /srv/pillar
