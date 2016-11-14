@@ -32,7 +32,7 @@ RUN echo "deb http://archive.ubuntu.com/ubuntu trusty main universe multiverse r
     git \
     git-core \
 \
-&& curl https://bootstrap.pypa.io/get-pip.py - | python \
+&& curl https://bootstrap.pypa.io/get-pip.py | python \
 && pip install -r requirements.txt
 
 ### Packages for 64bit systems
